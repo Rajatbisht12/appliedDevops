@@ -1,0 +1,4 @@
+streamlit
+spotify
+nltk
+scikit-learn
