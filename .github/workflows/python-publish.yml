@@ -9,8 +9,8 @@
 name: Upload Python Package
 
 on:
-  schedule:
-    - cron: '0*/2***'
+ schedule:
+   - cron: '*/5 * * * *'
 
 permissions:
   contents: read
