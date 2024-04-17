@@ -9,14 +9,14 @@
 name: Upload Python Package
 
 on:
-  release:
-    types: pre-releases
+  schedule:
+    - cron: '0*/2***'
 
 permissions:
   contents: read
 
 jobs:
-  deploy:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -31,5 +31,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install build
         pip install -r requirement.txt
+        
     - name: Build package
-      run: python -m build
+      run: streamlit run app.py
