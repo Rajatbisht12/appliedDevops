@@ -1,4 +1,4 @@
 streamlit
-spotify
+spotipy
 nltk
 scikit-learn
