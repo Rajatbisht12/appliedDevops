@@ -1,0 +1,28 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Docker Image
+      run: |
+        docker build -t my-python-app .
+        
+    - name: Run Docker Container
+      run: |
+        docker run -d -p 8000:8000 --name my-running-app my-python-app
+        
+    - name: Verify App
+      run: |
+        sleep 10  # Wait for container to start
+        curl http://localhost:8000
+      run: streamlit run app.py
