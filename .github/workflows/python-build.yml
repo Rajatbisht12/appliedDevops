@@ -12,17 +12,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Build Docker Image
       run: |
         docker build -t my-python-app .
-        
+
     - name: Run Docker Container
       run: |
-        docker run -d -p 8000:8000 --name my-running-app my-python-app
-        
-    - name: Verify App
+        docker run -d -p 8501:8501 --name my-running-app my-python-app
+
+    - name: Wait for Container
       run: |
         sleep 10  # Wait for container to start
+
+    - name: Verify App
+      run: |
         curl http://localhost:8000
-      run: streamlit run app.py
